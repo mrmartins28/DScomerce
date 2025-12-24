@@ -2,6 +2,7 @@ package com.devsuperior.dscomerce2.entities;
 
 import java.time.Instant;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -101,7 +102,13 @@ public class Order {
 	public String toString() {
 		return "Order [id=" + id + ", moment=" + moment + ", status=" + status + ", client=" + client + "]";
 	}
+
+	public Set<OrderItem> getItems() {
+		return items;
+	}
 	
-	
+	public List<Product> getProducts() {
+		return items.stream().map(x -> x.getProduct()).toList();
+	}
 
 }
